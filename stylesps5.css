@@ -76,9 +76,8 @@ body {
 
 
 .container {
-    background-color: rgb(235, 235, 235); /* Container background color */
+    background-color: #060031; /* Container background color */
     border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.684) !important; /* Shadow effect */
     padding: 20px; /* Padding inside the container */
     text-align: center; /* Center the content */
     max-width: 400px; /* Maximum width of the container */
@@ -93,7 +92,8 @@ body {
     max-width: 100%; 
     height: auto; 
     border-radius: 10px; 
-    
+    box-shadow: 0 10px 20px rgba(10, 1, 178, 0.771) !important; /* Shadow effect */
+    width: 1000px;
 }
 
 .gif{
