@@ -75,20 +75,23 @@ body {
 
 
 
-.container {
+.ps5 {
     background-color: #060031; /* Container background color */
     border-radius: 15px; /* Rounded corners */
     padding: 20px; /* Padding inside the container */
     text-align: center; /* Center the content */
     max-width: 400px; /* Maximum width of the container */
     width: 100%; /* Full width on smaller screens */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
    
     
 
 
 }
 
-.container img {
+.ps5 img {
     max-width: 100%; 
     height: auto; 
     border-radius: 10px; 
@@ -114,7 +117,7 @@ body {
 
 
 @media (min-width: 768px) {
-    .container {
+    .ps5 {
         max-width: 800px !important; /* Smaller maximum width for desktop */
     }
 }
