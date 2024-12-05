@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4424A7 !important;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height *//* Light background color */
+   
+}
+
+.navbar {
+    background-color: #0D006d;
+}
+
+.navbar-brand {
+    padding-left: 15px;
+}
+
+.navbar-nav {
+    padding-left: 50px !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #bdbdbd;
+}
+
+.dropdown-menu {
+    background-color: #331b7d !important;
+    opacity: 1; 
+}
+
+.dropdown-item {
+    color: rgb(255, 255, 255) !important;
+    opacity: 1 !important; 
+}
+
+.dropdown-item:hover {
+    background-color: #606fcf !important;
+    color: white;
+}
+
+.navbar-toggler {
+    border-color: transparent !important; 
+}
+
+.navbar-toggler-icon {
+    background-color: transparent; 
+    filter: invert(1);  
+    opacity: 1; 
+}
+
+@media (max-width: 700px) {
+    .form-inline {
+        width: 100%; 
+        margin-top: 10px; 
+    }
+
+    .form-inline .form-control {
+        width: 80%; 
+        margin-bottom: 10px; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+}
+
+.form-inline .form-control {
+    opacity: 0.75;  
+}
+
+
+
+.container {
+    background-color: rgb(235, 235, 235); /* Container background color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.684) !important; /* Shadow effect */
+    padding: 20px; /* Padding inside the container */
+    text-align: center; /* Center the content */
+    max-width: 400px; /* Maximum width of the container */
+    width: 100%; /* Full width on smaller screens */
+   
+    
+
+
+}
+
+.container img {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    
+}
+
+.gif{
+    background-color: #060031;
+    padding-top: 5px;
+    padding-bottom: 25px;
+}
+
+
+.gif .ps {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 200px;
+  
+}
+
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 800px !important; /* Smaller maximum width for desktop */
+    }
+}
