@@ -3,9 +3,9 @@ body {
     background-color: #4424A7 !important;
     margin: 0;
     padding: 0;
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack children vertically */
-    min-height: 100vh; /* Ensure body takes at least full height of viewport */
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
 }
 
 .navbar {
