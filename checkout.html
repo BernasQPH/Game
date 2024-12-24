@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody id="cart-items">
-                    <!-- Os itens do carrinho aparecerão aqui -->
+                    
                 </tbody>
             </table>
         </div>
@@ -34,7 +34,7 @@
         });
     </script>
     <script>
-        // Função para adicionar produto ao carrinho
+    
         function addToCart(productId) {
             fetch('PHP/adicionar_produto.php', {
                 method: 'POST',
@@ -47,9 +47,9 @@
             .then(data => {
                 if (data.success) {
                     alert(data.message);
-                    loadCart(); // Recarregar o carrinho se necessário
+                    loadCart(); 
                 } else {
-                    alert(data.message); // Exibe mensagem de erro
+                    alert(data.message);
                 }
             })
             .catch(error => {
@@ -57,7 +57,7 @@
             });
         }
 
-        // Carregar o carrinho
+       
         function loadCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartItems = document.getElementById('cart-items');

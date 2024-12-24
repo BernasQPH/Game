@@ -5,8 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Debug temporário para verificar a sessão
-// Remova esta linha depois de verificar que $_SESSION está funcionando
+
 
 ?>
 <nav class="navbar navbar-expand-lg  bg-light">
@@ -23,11 +22,11 @@ if (session_status() === PHP_SESSION_NONE) {
             </ul>
             <ul class="navbar-nav">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <!-- AQUIII -->
+                    
                     <a class="nav-link">Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
                     <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
                 <?php else: ?>
-                    <!-- Mostrar Login e Registo se a sessão não estiver ativa -->
+                  
                     <li class="nav-item"><a class="nav-link" href="registo.php">Registar</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                 <?php endif; ?>

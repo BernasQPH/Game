@@ -1,18 +1,18 @@
 <?php
-include 'PHP/config.php'; // Inclui o arquivo de configuração para conexão com o banco
+include 'PHP/config.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtem os dados do formulário
+   
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $mensagem = $_POST['mensagem'];
 
-    // Validação simples
+  
     if (!empty($nome) && !empty($email) && !empty($mensagem)) {
-        // Prepara a instrução SQL
+ 
         $stmt = $pdo->prepare("INSERT INTO contactos (nome, email, mensagem) VALUES (:nome, :email, :mensagem)");
         try {
-            // Executa a instrução
+           
             $stmt->execute([
                 ':nome' => $nome,
                 ':email' => $email,
@@ -54,21 +54,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </p>
               </div>
               <div class="responsive-container-block" id="i2cbk">
-                <!-- Nome -->
+               
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-3">
                   <p class="text-blk input-title">
                     Nome
                   </p>
                   <input class="input" name="nome" placeholder="Diz-nos o teu nome..." required>
                 </div>
-                <!-- Email -->
+               
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
                   <p class="text-blk input-title">
                     Correio Eletrónico
                   </p>
                   <input class="input" name="email" placeholder="Insere o teu email..." required>
                 </div>
-                <!-- Mensagem -->
+           
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
                   <p class="text-blk input-title">
                     Mensagem

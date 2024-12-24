@@ -15,15 +15,15 @@
         
         spline-viewer {
         width: 100%;
-        height: 100vh; /* Usa 70% da altura da janela */
-        max-height: 600px; /* Limite máximo para telas maiores */
+        height: 100vh; 
+        max-height: 600px; 
         background-color: url('./imagens/fluxo.jpg');
     }
     
-    /* Responsividade adicional */
+  
     @media (max-width: 768px) {
         spline-viewer {
-            height: 50vh; /* Reduz altura para telas menores */
+            height: 50vh; 
         }
     }
 
@@ -132,7 +132,6 @@ color: #808080;
 </head>
 <body>
 <?php include 'PHP/navbar.php'; ?>
-    <!-- Hero Section -->
     <div class="hero">
         <div class="text-center">
         

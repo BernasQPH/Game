@@ -1,5 +1,5 @@
 <?php
-include 'config.php'; // Inclui a conexão com o banco de dados
+include 'config.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'])) {
     $email = $_POST['email'];

@@ -1,5 +1,5 @@
 <?php
-require 'PHP/config.php'; // Certifique-se de incluir seu arquivo de configuração para conexão ao banco de dados
+require 'PHP/config.php'; 
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "<h1>Produto não encontrado.</h1>";
@@ -8,7 +8,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// Consultar o banco de dados para obter os detalhes do produto
+
 $sql = "SELECT * FROM produto WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
@@ -37,10 +37,10 @@ $produto = $result->fetch_assoc();
             margin-top: 50px;
         }
         .produto-imagem img {
-            width: 480px; /* Define largura fixa */
-            height: 500px; /* Define altura fixa */
-            object-fit: cover; /* Ajusta a imagem ao tamanho sem distorcer */
-            border-radius: 5px; /* Cantos arredondados para estética */
+            width: 480px; 
+            height: 500px; 
+            object-fit: cover;
+            border-radius: 5px;
             display: block;
             padding-right: 2px:
         }
