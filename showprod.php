@@ -39,19 +39,17 @@ $produto = $result->fetch_assoc();
         .produto-imagem img {
             width: 480px; 
             height: 500px; 
-            object-fit: cover;
-            border-radius: 5px;
+            object-fit: cover; 
+            border-radius: 5px; 
             display: block;
-            padding-right: 2px:
+            padding-right: 2px;
         }
         .produto-detalhes {
             margin-top: 20px;
         }
     </style>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link href="../CSS/footer.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../CSS/footer.css" rel="stylesheet">
 </head>
 <body>
 <?php include 'PHP/navbar.php'; ?>
@@ -70,23 +68,40 @@ $produto = $result->fetch_assoc();
             <?php if ($produto['status'] !== 'Esgotado'): ?>    
                 <button 
                     class="btn btn-primary add-to-cart" 
-                    data-id="${produto.id}" 
-                    data-name="${produto.designation}" 
-                    data-price="${produto.price}">
+                    data-id="<?php echo $produto['id']; ?>" 
+                    data-name="<?php echo htmlspecialchars($produto['designation']); ?>" 
+                    data-price="<?php echo $produto['price']; ?>">
                     Adicionar ao Carrinho
                 </button>
-
-                <div class="mt-4">
-                <a href="checkout.html" class="btn btn-success">Ir para o Checkout</a>
-            </div>
-                
             <?php else: ?>
                 <p class="text-danger">Produto esgotado</p>
             <?php endif; ?>
+            <div class="mt-4">
+                <a href="checkout.html" class="btn btn-success">Ir para o Checkout</a>
+            </div>
         </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    document.querySelector('.add-to-cart').addEventListener('click', function () {
+        const product = {
+            id: this.getAttribute('data-id'),
+            name: this.getAttribute('data-name'),
+            price: parseFloat(this.getAttribute('data-price'))
+        };
+
+       
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+
+       
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Produto adicionado ao carrinho!');
+    });
+</script>
 <?php include 'PHP/footer.php'; ?>
 </body>
 </html>
