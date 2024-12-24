@@ -114,55 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
       </div>
 
-      <div class="footer">
-        <section class="footer">
-          <div class="footer-row">
-            <div class="footer-col">
-              <h4>Info</h4>
-              <ul class="links">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Carreer</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Help</h4>
-              <ul class="links">
-                <li><a href="#">FAQ´S</a></li>
-                <li><a href="#">How to buy</a></li>
-                <li><a href="#">How to activate keys</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>User terms & Privacy</h4>
-              <ul class="links">
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Cookies Policy</a></li>
-                <li><a href="#">Politica de Devoluções</a></li>
-              </ul>
-            </div>
-            <div class="footer-col">
-              <h4>Newsletter</h4>
-              <p>
-                Subscribe to our newsletter for a weekly dose
-                of news, updates, helpful tips, and
-                exclusive offers.
-              </p>
-              <form action="#">
-                <input type="text" placeholder="Your email" required>
-                <button type="submit">SUBSCRIBE</button>
-              </form>
-              <div class="icons">
-                <a href="https://www.facebook.com/Microsoft/?locale=pt_PT"> <i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://x.com/microsoft"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/company/microsoft?originalSubdomain=pt"><i class="fa-brands fa-linkedin"></i> </a>
-                </i> <a href="https://github.com/microsoft"><i class="fa-brands fa-github"></i></a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+      <?php include 'PHP/footer.php'; ?>
 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
