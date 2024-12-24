@@ -53,8 +53,8 @@
               <div class="col-12 col-md-6 col-lg-2">
                   <select id="status-filter" class="form-select">
                       <option value="">Status</option>
-                      <option value="Available">Disponível</option>
-                      <option value="Unavailable">Indisponível</option>
+                      <option value="Disponível">Disponível</option>
+                      <option value="Indisponível">Indisponível</option>
                   </select>
               </div>
               <div class="col-12 col-md-6 col-lg-2">
