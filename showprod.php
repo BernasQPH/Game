@@ -75,6 +75,10 @@ $produto = $result->fetch_assoc();
                     data-price="${produto.price}">
                     Adicionar ao Carrinho
                 </button>
+
+                <div class="mt-4">
+                <a href="checkout.html" class="btn btn-success">Ir para o Checkout</a>
+            </div>
                 
             <?php else: ?>
                 <p class="text-danger">Produto esgotado</p>
