@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "bd_game";
+$user = "web";
+$password = "web";
+$dbname = "grupo101";
 
 $conn = new mysqli($host, $user, $password, $dbname);
 
