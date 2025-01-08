@@ -7,7 +7,7 @@
               <h4>Info</h4>
               <ul class="links">
                 <li><a href="../aboutus.php">Sobre nós</a></li>
-                <li><a href="../Contactus.php">Contactos</a></li>
+                <li><a href="../contactus.php">Contactos</a></li>
                 <li><a href="../search.php">Produtos</a></li>
               </ul>
             </div>

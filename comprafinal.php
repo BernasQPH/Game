@@ -18,7 +18,7 @@
         <p class="mt-4">A sua chave de ativação foi enviada para o seu endereço de correio eletrónico.</p>
         <p>Verifique a sua caixa de entrada, incluindo a pasta de spam.</p>
 
-        <p class="mt-4">Caso tenha alguma dúvida ou problema, por favor <a href="Contactus.php" class="text-primary">contacte-nos</a>.</p>
+        <p class="mt-4">Caso tenha alguma dúvida ou problema, por favor <a href="contactus.php" class="text-primary">contacte-nos</a>.</p>
 
         <a href="index.php" class="btn btn-primary mt-4">Voltar à Página Inicial</a>
     </div>

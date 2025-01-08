@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="contact_us_6">
         <div class="responsive-container-block container">
-          <form class="form-box" action="Contactus.php" method="POST">
+          <form class="form-box" action="contactus.php" method="POST">
             <div class="container-block form-wrapper">
               <div class="mob-text">
                 <p class="text-blk contactus-head">
