@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="CSS/footer.css" rel="stylesheet">
     
 </head>
-<body>
+<body> 
   
     <?php include 'PHP/navbar.php'; ?>
 

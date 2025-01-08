@@ -11,6 +11,7 @@
                 <li><a href="../search.php">Produtos</a></li>
               </ul>
             </div>
+            
             <div class="footer-col">
               <h4>Help</h4>
               <ul class="links">
