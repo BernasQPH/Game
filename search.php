@@ -68,7 +68,6 @@
                 <button type="submit" class="btn btn-primary w-100 w-md-auto">Filtrar</button>
             </div>
         </form>
-        
 
         <div class="result-table mt-5">
             <div class="table-responsive">
@@ -85,7 +84,6 @@
                         </tr>
                     </thead>
                     <tbody id="results">
-                        
                     </tbody>
                 </table>
             </div>
@@ -96,25 +94,23 @@
     </div>
 
     <script>
-        let allProducts = [];  
+        let allProducts = [];
 
-      
         function loadProducts() {
             fetch('pesquisa.php')
                 .then(response => response.json())
                 .then(data => {
-                    allProducts = data;  
-                    displayProducts(allProducts);  
+                    allProducts = data;
+                    displayProducts(allProducts);
                 })
                 .catch(error => {
                     console.error('Erro ao carregar produtos:', error);
                 });
         }
 
-       
         function displayProducts(products) {
             const results = document.getElementById('results');
-            results.innerHTML = '';  
+            results.innerHTML = '';
 
             if (products.length === 0) {
                 results.innerHTML = '<tr><td colspan="8" class="text-center">Nenhum produto encontrado</td></tr>';
@@ -146,10 +142,34 @@
                     `;
                     results.innerHTML += row;
                 });
+
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const product = {
+                            id: this.getAttribute('data-id'),
+                            name: this.getAttribute('data-name'),
+                            price: parseFloat(this.getAttribute('data-price'))
+                        };
+
+                        addToCart(product);
+                    });
+                });
             }
         }
 
-     
+        function addToCart(product) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(p => p.id === product.id);
+
+            if (existingProductIndex >= 0) {
+                alert('Este produto já está no carrinho!');
+            } else {
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert('Produto adicionado ao carrinho com sucesso!');
+            }
+        }
+
         document.getElementById('search-form').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -159,7 +179,6 @@
             const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
             const priceMax = parseFloat(document.getElementById('price-max').value) || Number.MAX_VALUE;
 
-       
             const filteredProducts = allProducts.filter(produto => {
                 const matchesQuery = produto.designation.toLowerCase().includes(query);
                 const matchesPlatform = !platform || produto.platform === platform;
@@ -169,10 +188,9 @@
                 return matchesQuery && matchesPlatform && matchesStatus && matchesPrice;
             });
 
-            displayProducts(filteredProducts);  
+            displayProducts(filteredProducts);
         });
 
-       
         document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 
