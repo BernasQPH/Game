@@ -38,11 +38,11 @@
 
             <div class="accordion-item" id="privacidade">
                 <h2 class="accordion-header" id="headingPrivacy">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy" aria-expanded="false" aria-controls="collapsePrivacy">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy" aria-expanded="true" aria-controls="collapsePrivacy">
                         Política de Privacidade
                     </button>
                 </h2>
-                <div id="collapsePrivacy" class="accordion-collapse collapse" aria-labelledby="headingPrivacy" data-bs-parent="#policiesAccordion">
+                <div id="collapsePrivacy" class="accordion-collapse collapse show" aria-labelledby="headingPrivacy" data-bs-parent="#policiesAccordion">
                     <div class="accordion-body">
                         <p>A nossa Política de Privacidade explica como recolhemos, utilizamos e protegemos as informações pessoais dos nossos utilizadores. Garantimos a segurança e privacidade dos seus dados.</p>
                         <ul>
@@ -56,11 +56,11 @@
 
             <div class="accordion-item" id="cookies">
                 <h2 class="accordion-header" id="headingCookies">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCookies" aria-expanded="false" aria-controls="collapseCookies">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCookies" aria-expanded="true" aria-controls="collapseCookies">
                         Política de Cookies
                     </button>
                 </h2>
-                <div id="collapseCookies" class="accordion-collapse collapse" aria-labelledby="headingCookies" data-bs-parent="#policiesAccordion">
+                <div id="collapseCookies" class="accordion-collapse collapse show" aria-labelledby="headingCookies" data-bs-parent="#policiesAccordion">
                     <div class="accordion-body">
                         <p>Utilizamos cookies para melhorar a experiência do utilizador na nossa plataforma. Pode gerir as definições de cookies conforme a sua preferência.</p>
                         <ul>
@@ -74,11 +74,11 @@
 
             <div class="accordion-item" id="devolucoes">
                 <h2 class="accordion-header" id="headingReturns">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="true" aria-controls="collapseReturns">
                         Política de Devoluções
                     </button>
                 </h2>
-                <div id="collapseReturns" class="accordion-collapse collapse" aria-labelledby="headingReturns" data-bs-parent="#policiesAccordion">
+                <div id="collapseReturns" class="accordion-collapse collapse show" aria-labelledby="headingReturns" data-bs-parent="#policiesAccordion">
                     <div class="accordion-body">
                         <p>A nossa Política de Devoluções oferece aos utilizadores a possibilidade de reembolso em condições específicas. Consulte as regras abaixo:</p>
                         <ul>
@@ -92,6 +92,6 @@
         </div>
     </div>
     <?php include 'PHP/footer.php'; ?>
-<body>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+</html>

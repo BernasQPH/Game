@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'PHP/config.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -16,19 +16,19 @@ if (session_status() === PHP_SESSION_NONE) {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto"> 
-                <li class="nav-item"><a class="nav-link" href="../aboutus.php">Sobre Nós</a></li>
-                <li class="nav-item"><a class="nav-link" href="../contactus.php">Contactos</a></li>
-                <li class="nav-item"><a class="nav-link" href="../search.php">Produtos</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutus.php">Sobre Nós</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.php">Contactos</a></li>
+                <li class="nav-item"><a class="nav-link" href="search.php">Produtos</a></li>
             </ul>
             <ul class="navbar-nav">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     
                     <a class="nav-link">Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
-                    <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 <?php else: ?>
                   
-                    <li class="nav-item"><a class="nav-link" href="../registo.php">Registar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registo.php">Registar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
                 <?php endif; ?>
             </ul>
         </div>

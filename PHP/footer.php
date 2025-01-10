@@ -6,27 +6,27 @@
             <div class="footer-col">
               <h4>Info</h4>
               <ul class="links">
-                <li><a href="../aboutus.php">Sobre nós</a></li>
-                <li><a href="../contactus.php">Contactos</a></li>
-                <li><a href="../search.php">Produtos</a></li>
+                <li><a href="aboutus.php">Sobre nós</a></li>
+                <li><a href="contactus.php">Contactos</a></li>
+                <li><a href="search.php">Produtos</a></li>
               </ul>
             </div>
             
             <div class="footer-col">
               <h4>Help</h4>
               <ul class="links">
-                <li><a href=".//index.php">FAQ´S</a></li>
-                <li><a href=".//index.php">Como comprar?</a></li>
-                <li><a href=".//index.php">Como ativar keys?</a></li>
+                <li><a href="index.php">FAQ´S</a></li>
+                <li><a href="index.php">Como comprar?</a></li>
+                <li><a href="index.php">Como ativar keys?</a></li>
               </ul>
             </div>
             <div class="footer-col">
               <h4>User terms & Privacy</h4>
               <ul class="links">
-                <li><a href="../terms.php#termos">Termos e Condições</a></li>
-                <li><a href="../terms.php#privacidade">Política de Privacidade</a></li>
-                <li><a href="../terms.php#cookies">Política de Cookies</a></li>
-                <li><a href="../terms.php#devolucoes">Política de Devoluções</a></li>
+                <li><a href="terms.php#termos">Termos e Condições</a></li>
+                <li><a href="terms.php#privacidade">Política de Privacidade</a></li>
+                <li><a href="terms.php#cookies">Política de Cookies</a></li>
+                <li><a href="terms.php#devolucoes">Política de Devoluções</a></li>
               </ul>
             </div>
             <div class="footer-col">
