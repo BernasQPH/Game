@@ -10,13 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senha = $_POST['senha'];
 
     $sql = "SELECT * FROM utilizadores WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    
-    // Fetch the result directly without get_result()
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
 
     if ($user && password_verify($senha, $user['senha'])) {
         $_SESSION['user_id'] = $user['idc'];

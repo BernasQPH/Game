@@ -1,16 +1,16 @@
 <?php
-include 'PHP/config.php'; 
+include 'config.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'])) {
     $email = $_POST['email'];
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $stmt = $conn->prepare("INSERT INTO newsletter (email) VALUES (?)");
-        $stmt->bind_param("s", $email);
-        if ($stmt->execute()) {
+        try {
+            $stmt = $pdo->prepare("INSERT INTO newsletter (email) VALUES (:email)");
+            $stmt->execute([':email' => $email]);
             echo "Inscrição bem-sucedida!";
-        } else {
-            echo "Erro ao salvar o email: " . $conn->error;
+        } catch (PDOException $e) {
+            echo "Erro ao salvar o email: " . $e->getMessage();
         }
     } else {
         echo "Email inválido.";
@@ -19,5 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'])) {
     echo "Método inválido.";
 }
 
-header("Location: index.php");
+header("Location: ../index.php");
 ?>
+
+
