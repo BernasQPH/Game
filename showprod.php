@@ -81,7 +81,7 @@ $produto = $result->fetch_assoc();
                 <p class="text-danger">Produto esgotado</p>
             <?php endif; ?>
             <div class="mt-4">
-                <a href="checkout.html" class="btn btn-success">Ir para o Checkout</a>
+                <a href="checkout.php" class="btn btn-success">Ir para o Checkout</a>
             </div>
         </div>
     </div>

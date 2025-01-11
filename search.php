@@ -1,14 +1,100 @@
+<?php
+session_start();
+include('PHP/config.php'); 
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+
+function buscarProdutos($conn, $query = '', $platform = '', $status = '', $priceMin = null, $priceMax = null) {
+    $sql = "SELECT * FROM produto WHERE 1=1"; 
+    $params = [];
+    $types = '';
+
+    if (!empty($query)) {
+        $sql .= " AND LOWER(designation) LIKE ?";
+        $params[] = '%' . strtolower($query) . '%';
+        $types .= "s";
+    }
+
+    if (!empty($platform)) {
+        $sql .= " AND platform = ?";
+        $params[] = $platform;
+        $types .= "s";
+    }
+
+    if (!empty($status)) {
+        $sql .= " AND status = ?";
+        $params[] = $status;
+        $types .= "s";
+    }
+
+    if (!is_null($priceMin) && $priceMin !== '') {
+        $sql .= " AND price >= ?";
+        $params[] = $priceMin;
+        $types .= "d";
+    }
+
+    if (!is_null($priceMax) && $priceMax !== '') {
+        $sql .= " AND price <= ?";
+        $params[] = $priceMax;
+        $types .= "d";
+    }
+
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Erro na preparação da query: " . $conn->error);
+    }
+
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+
+if (isset($_POST['add_to_cart'])) {
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+
+    $existe = array_filter($_SESSION['cart'], fn($p) => $p['id'] == $product_id);
+
+    if (!empty($existe)) {
+        echo "<script>alert('Este produto já está no carrinho!');</script>";
+    } else {
+        $_SESSION['cart'][] = [
+            'id' => $product_id,
+            'name' => $product_name,
+            'price' => $product_price
+        ];
+        echo "<script>alert('Produto adicionado ao carrinho com sucesso!');</script>";
+    }
+}
+
+
+$query = $_GET['query'] ?? '';
+$platform = $_GET['platform'] ?? '';
+$status = $_GET['status'] ?? '';
+$priceMin = !empty($_GET['price_min']) ? (float)$_GET['price_min'] : null;
+$priceMax = !empty($_GET['price_max']) ? (float)$_GET['price_max'] : null;
+
+
+$produtos = buscarProdutos($conn, $query, $platform, $status, $priceMin, $priceMax);
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Produtos</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="CSS/footer.css" rel="stylesheet">
-
     <style>
         body {
             background-color: #f8f9fa;
@@ -18,7 +104,7 @@
         }
         .result-table img {
             width: 100%;
-            max-width: 50px;
+            max-width: 100px;
             height: auto;
             object-fit: cover;
             border-radius: 5px;
@@ -38,31 +124,31 @@
     <?php include 'PHP/navbar.php'; ?>
 
     <div class="container">
-        <form id="search-form" class="row g-3 mt-4">
+        <form method="GET" class="row g-3 mt-4">
             <div class="col-12 col-md-6 col-lg-4">
-                <input type="text" id="search-input" class="form-control" placeholder="Nome do produto">
+                <input type="text" name="query" class="form-control" placeholder="Nome do produto" value="<?= htmlspecialchars($query) ?>">
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <select id="platform-filter" class="form-select">
+                <select name="platform" class="form-select">
                     <option value="">Plataforma</option>
-                    <option value="Switch">Switch</option>
-                    <option value="PC">PC</option>
-                    <option value="PlayStation">PlayStation</option>
-                    <option value="Xbox">Xbox</option>
+                    <option value="Switch" <?= $platform == 'Switch' ? 'selected' : '' ?>>Switch</option>
+                    <option value="PC" <?= $platform == 'PC' ? 'selected' : '' ?>>PC</option>
+                    <option value="PlayStation" <?= $platform == 'PlayStation' ? 'selected' : '' ?>>PlayStation</option>
+                    <option value="Xbox" <?= $platform == 'Xbox' ? 'selected' : '' ?>>Xbox</option>
                 </select>
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <select id="status-filter" class="form-select">
+                <select name="status" class="form-select">
                     <option value="">Status</option>
-                    <option value="Disponível">Disponível</option>
-                    <option value="Indisponível">Indisponível</option>
+                    <option value="Disponível" <?= $status == 'Disponível' ? 'selected' : '' ?>>Disponível</option>
+                    <option value="Indisponível" <?= $status == 'Indisponível' ? 'selected' : '' ?>>Indisponível</option>
                 </select>
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <input type="number" id="price-min" class="form-control" placeholder="Preço Mínimo">
+                <input type="number" name="price_min" class="form-control" placeholder="Preço Mínimo" value="<?= htmlspecialchars($_GET['price_min'] ?? '') ?>">
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <input type="number" id="price-max" class="form-control" placeholder="Preço Máximo">
+                <input type="number" name="price_max" class="form-control" placeholder="Preço Máximo" value="<?= htmlspecialchars($_GET['price_max'] ?? '') ?>">
             </div>
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary w-100 w-md-auto">Filtrar</button>
@@ -74,7 +160,7 @@
                 <table class="table table-bordered table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th>#</th>
+                            <th>Imagem</th>
                             <th>Nome</th>
                             <th>Plataforma</th>
                             <th>Preço</th>
@@ -83,116 +169,41 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="results">
+                    <tbody>
+                        <?php if ($produtos->num_rows > 0): ?>
+                            <?php while ($produto = $produtos->fetch_assoc()): ?>
+                                <tr>
+                                    <td>
+                                        <img src="<?= htmlspecialchars($produto['image_url'] ?? 'imagens/placeholder.jpg') ?>" alt="<?= htmlspecialchars($produto['designation']) ?>">
+                                    </td>
+                                    <td><a href="showprod.php?id=<?= $produto['id'] ?>"><?= htmlspecialchars($produto['designation']) ?></a></td>
+                                    <td><?= htmlspecialchars($produto['platform']) ?></td>
+                                    <td>€<?= number_format($produto['price'], 2) ?></td>
+                                    <td><?= htmlspecialchars($produto['status']) ?></td>
+                                    <td><?= htmlspecialchars($produto['description']) ?></td>
+                                    <td>
+                                        <form method="POST">
+                                            <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
+                                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($produto['designation']) ?>">
+                                            <input type="hidden" name="product_price" value="<?= $produto['price'] ?>">
+                                            <button type="submit" name="add_to_cart" class="btn btn-primary">Adicionar ao Carrinho</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="text-center">Nenhum produto encontrado</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="text-center mt-4">
-            <a href="checkout.html" class="btn btn-success">Ir para o Checkout</a>
+            <a href="checkout.php" class="btn btn-success">Ir para o Checkout</a>
         </div>
     </div>
-
-    <script>
-        let allProducts = [];
-
-        function loadProducts() {
-            fetch('pesquisa.php')
-                .then(response => response.json())
-                .then(data => {
-                    allProducts = data;
-                    displayProducts(allProducts);
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar produtos:', error);
-                });
-        }
-
-        function displayProducts(products) {
-            const results = document.getElementById('results');
-            results.innerHTML = '';
-
-            if (products.length === 0) {
-                results.innerHTML = '<tr><td colspan="8" class="text-center">Nenhum produto encontrado</td></tr>';
-            } else {
-                products.forEach(produto => {
-                    const row = `
-                        <tr>
-                            <td>
-                                ${produto.image_url
-                                    ? `<img src="${produto.image_url}" alt="${produto.designation}" style="width: 50px; height: 50px; object-fit: cover;">`
-                                    : `<img src="imagens/placeholder.jpg" alt="Imagem indisponível" style="width: 50px; height: 50px; object-fit: cover;">`
-                                }
-                            </td>
-                            <td><a href="showprod.php?id=${produto.id}">${produto.designation}</a></td>
-                            <td>${produto.platform}</td>
-                            <td>€${produto.price.toFixed(2)}</td>
-                            <td>${produto.status}</td>
-                            <td>${produto.description}</td>
-                            <td>
-                                <button 
-                                    class="btn btn-primary add-to-cart" 
-                                    data-id="${produto.id}" 
-                                    data-name="${produto.designation}" 
-                                    data-price="${produto.price}">
-                                    Adicionar ao Carrinho
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                    results.innerHTML += row;
-                });
-
-                document.querySelectorAll('.add-to-cart').forEach(button => {
-                    button.addEventListener('click', function () {
-                        const product = {
-                            id: this.getAttribute('data-id'),
-                            name: this.getAttribute('data-name'),
-                            price: parseFloat(this.getAttribute('data-price'))
-                        };
-
-                        addToCart(product);
-                    });
-                });
-            }
-        }
-
-        function addToCart(product) {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const existingProductIndex = cart.findIndex(p => p.id === product.id);
-
-            if (existingProductIndex >= 0) {
-                alert('Este produto já está no carrinho!');
-            } else {
-                cart.push(product);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                alert('Produto adicionado ao carrinho com sucesso!');
-            }
-        }
-
-        document.getElementById('search-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const platform = document.getElementById('platform-filter').value;
-            const status = document.getElementById('status-filter').value;
-            const priceMin = parseFloat(document.getElementById('price-min').value) || 0;
-            const priceMax = parseFloat(document.getElementById('price-max').value) || Number.MAX_VALUE;
-
-            const filteredProducts = allProducts.filter(produto => {
-                const matchesQuery = produto.designation.toLowerCase().includes(query);
-                const matchesPlatform = !platform || produto.platform === platform;
-                const matchesStatus = !status || produto.status === status;
-                const matchesPrice = produto.price >= priceMin && produto.price <= priceMax;
-
-                return matchesQuery && matchesPlatform && matchesStatus && matchesPrice;
-            });
-
-            displayProducts(filteredProducts);
-        });
-
-        document.addEventListener('DOMContentLoaded', loadProducts);
-    </script>
 
     <?php include 'PHP/footer.php'; ?>
 </body>

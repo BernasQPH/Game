@@ -1,21 +1,29 @@
 <?php
 require 'PHP/config.php';
 
+// Verifique se a conexão está sendo estabelecida corretamente
+if (!$conn) {
+    die("Erro de conexão: " . $conn->connect_error);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $primeiro_nome = htmlspecialchars($_POST['primeiro_nome']);
     $ultimo_nome = htmlspecialchars($_POST['ultimo_nome']);
     $email = htmlspecialchars($_POST['email']);
-    $numero_telemovel = htmlspecialchars($_POST['numero_telemovel']);
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO utilizadores (primeiro_nome, ultimo_nome, email, numero_telemovel, senha) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-    if ($stmt->execute([$primeiro_nome, $ultimo_nome, $email, $numero_telemovel, $senha])) {
+    $sql = "INSERT INTO utilizadores (primeiro_nome, ultimo_nome, email, senha) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $primeiro_nome, $ultimo_nome, $email, $senha);
+    
+    if ($stmt->execute()) {
         header("Location: login.php");
         exit;
     } else {
         echo "Erro no registo! Tente novamente.";
     }
+
+    header("Location: ../index.php");
 }
 ?>
 
@@ -32,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include 'PHP/navbar.php'; ?>
     <div class="container mt-5">
-        <h2>Registar</h2>
+        <h2>Registo</h2>
         <form method="POST">
             <div class="mb-3">
                 <label for="primeiro_nome" class="form-label">Primeiro Nome</label>
@@ -45,10 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="numero_telemovel" class="form-label">Número de Telemóvel</label>
-                <input type="text" class="form-control" id="numero_telemovel" name="numero_telemovel">
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
