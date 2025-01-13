@@ -10,14 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
     if (!empty($nome) && !empty($email) && !empty($mensagem)) {
  
-        $stmt = $pdo->prepare("INSERT INTO contactos (nome, email, mensagem) VALUES (:nome, :email, :mensagem)");
+        $stmt = $conn->prepare("INSERT INTO contactos (nome, email, mensagem) VALUES (?, ?, ?)");
         try {
            
-            $stmt->execute([
-                ':nome' => $nome,
-                ':email' => $email,
-                ':mensagem' => $mensagem
-            ]);
+            $stmt->bind_param("sss", $nome, $email, $mensagem);
+            $stmt->execute();
             echo "<script>alert('Mensagem enviada com sucesso!');</script>";
         } catch (Exception $e) {
             echo "<script>alert('Erro ao enviar mensagem: " . $e->getMessage() . "');</script>";
