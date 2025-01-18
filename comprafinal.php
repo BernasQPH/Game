@@ -21,7 +21,7 @@
 
         <p class="mt-4">Caso tenha alguma dúvida ou problema, por favor <a href="contactus.php" class="text-primary">contacte-nos</a>.</p>
 
-        <a href="index.php" class="btn btn-primary mt-4">Voltar à Página Inicial</a>
+        
     </div>
 
     <?php include 'php/footer.php'; ?>
