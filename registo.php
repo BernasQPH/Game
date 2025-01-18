@@ -1,5 +1,5 @@
 <?php
-require 'PHP/config.php';
+require 'php/config.php';
 
 // Verifique se a conexão está sendo estabelecida corretamente
 if (!$conn) {
@@ -7,9 +7,9 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $primeiro_nome = htmlspecialchars($_POST['primeiro_nome']);
-    $ultimo_nome = htmlspecialchars($_POST['ultimo_nome']);
-    $email = htmlspecialchars($_POST['email']);
+    $primeiro_nome = $_POST['primeiro_nome'];
+    $ultimo_nome =$_POST['ultimo_nome'];
+    $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO utilizadores (primeiro_nome, ultimo_nome, email, senha) VALUES (?, ?, ?, ?)";
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <?php include 'PHP/navbar.php'; ?>
+    <?php include 'php/navbar.php'; ?>
     <div class="container mt-5">
         <h2>Registo</h2>
         <form method="POST">

@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game | Compra Finalizada</title>
     
-    <link href="CSS/footer.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-<?php include 'PHP/navbar.php'; ?>
+<?php include 'php/navbar.php'; ?>
     <div class="container mt-5 text-center">
         <div class="alert alert-success" role="alert">
             <h1 class="display-4">Compra Finalizada com Sucesso!</h1>
@@ -24,7 +24,7 @@
         <a href="index.php" class="btn btn-primary mt-4">Voltar à Página Inicial</a>
     </div>
 
-    <?php include 'PHP/footer.php'; ?>
+    <?php include 'php/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

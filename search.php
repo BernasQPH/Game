@@ -1,11 +1,10 @@
 <?php
 session_start();
-include('PHP/config.php'); 
+include('php/config.php'); 
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
 
 function buscarProdutos($conn, $query = '', $platform = '', $status = '', $priceMin = null, $priceMax = null) {
     $sql = "SELECT * FROM produto WHERE 1=1"; 
@@ -94,39 +93,23 @@ $produtos = buscarProdutos($conn, $query, $platform, $status, $priceMin, $priceM
     <title>Pesquisa de Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="CSS/footer.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
         }
-        .container {
-            margin-top: 30px;
-        }
-        .result-table img {
-            width: 100%;
-            max-width: 100px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        @media (max-width: 768px) {
-            .form-control,
-            .form-select,
-            .btn {
-                max-width: 100%;
-                width: 100%;
-            }
-        }
+
+
     </style>
 </head>
 <body>
 
-    <?php include 'PHP/navbar.php'; ?>
+    <?php include 'php/navbar.php'; ?>
 
     <div class="container">
         <form method="GET" class="row g-3 mt-4">
             <div class="col-12 col-md-6 col-lg-4">
-                <input type="text" name="query" class="form-control" placeholder="Nome do produto" value="<?= htmlspecialchars($query) ?>">
+                <input type="text" name="query" class="form-control" placeholder="Nome do produto" value="<?= $query ?>">
             </div>
             <div class="col-12 col-md-6 col-lg-2">
                 <select name="platform" class="form-select">
@@ -145,66 +128,42 @@ $produtos = buscarProdutos($conn, $query, $platform, $status, $priceMin, $priceM
                 </select>
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <input type="number" name="price_min" class="form-control" placeholder="Preço Mínimo" value="<?= htmlspecialchars($_GET['price_min'] ?? '') ?>">
+                <input type="number" name="price_min" class="form-control" placeholder="Preço Mínimo" value="<?= $_GET['price_min'] ?? '' ?>">
             </div>
             <div class="col-12 col-md-6 col-lg-2">
-                <input type="number" name="price_max" class="form-control" placeholder="Preço Máximo" value="<?= htmlspecialchars($_GET['price_max'] ?? '') ?>">
+                <input type="number" name="price_max" class="form-control" placeholder="Preço Máximo" value="<?= $_GET['price_max'] ?? '' ?>">
             </div>
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary w-100 w-md-auto">Filtrar</button>
             </div>
         </form>
 
-        <div class="result-table mt-5">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Imagem</th>
-                            <th>Nome</th>
-                            <th>Plataforma</th>
-                            <th>Preço</th>
-                            <th>Status</th>
-                            <th>Descrição</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($produtos->num_rows > 0): ?>
-                            <?php while ($produto = $produtos->fetch_assoc()): ?>
-                                <tr>
-                                    <td>
-                                        <img src="<?= htmlspecialchars($produto['image_url'] ?? 'imagens/placeholder.jpg') ?>" alt="<?= htmlspecialchars($produto['designation']) ?>">
-                                    </td>
-                                    <td><a href="showprod.php?id=<?= $produto['id'] ?>"><?= htmlspecialchars($produto['designation']) ?></a></td>
-                                    <td><?= htmlspecialchars($produto['platform']) ?></td>
-                                    <td>€<?= number_format($produto['price'], 2) ?></td>
-                                    <td><?= htmlspecialchars($produto['status']) ?></td>
-                                    <td><?= htmlspecialchars($produto['description']) ?></td>
-                                    <td>
-                                        <form method="POST">
-                                            <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
-                                            <input type="hidden" name="product_name" value="<?= htmlspecialchars($produto['designation']) ?>">
-                                            <input type="hidden" name="product_price" value="<?= $produto['price'] ?>">
-                                            <button type="submit" name="add_to_cart" class="btn btn-primary">Adicionar ao Carrinho</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="7" class="text-center">Nenhum produto encontrado</td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+
+        <div class="container">
+    <div class="row">
+        <?php while ($produto = $produtos->fetch_assoc()): ?>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="jogo mt-3">
+                <a href="showprod.php?id=<?= $produto['id'] ?>"><img class="img-fluid w-100 justify-content-center" src="<?= $produto['image_url'] ?>" /></a>
+                <div><?= $produto['designation'] ?></div>
+                <div><?= $produto['price'] ?></div>
+                <div><?= $produto['platform'] ?></div>
+                <div><?= $produto['status'] ?></div>
+                <div>                                    
+                    <form method="POST" >
+                        <input type="hidden" name="product_id" value="<?= $produto['id'] ?>">
+                        <input type="hidden" name="product_name" value="<?= $produto['designation'] ?>">
+                        <input type="hidden" name="product_price" value="<?= $produto['price'] ?>">
+                        <button type="submit" name="add_to_cart" class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="text-center mt-4">
-            <a href="checkout.php" class="btn btn-success">Ir para o Checkout</a>
-        </div>
+        <?php endwhile; ?>
     </div>
+</div>
 
-    <?php include 'PHP/footer.php'; ?>
+
+    <?php include 'php/footer.php'; ?>
 </body>
 </html>

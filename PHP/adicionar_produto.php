@@ -1,5 +1,5 @@
 <?php
-require_once 'PHP/config.php';
+require_once 'php/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    

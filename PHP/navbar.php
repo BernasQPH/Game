@@ -1,10 +1,9 @@
 <?php
-include 'PHP/config.php';
+include 'php/config.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 
 
 ?>
@@ -23,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <ul class="navbar-nav">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     
-                    <a class="nav-link">Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?></a>
+                    <a class="nav-link">Bem-vindo, <?php echo $_SESSION['user_name']; ?></a>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 <?php else: ?>
                   

@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
                         <?php foreach ($_SESSION['cart'] as $index => $item): ?>
                             <tr>
                                 <td><?= $index + 1 ?></td>
-                                <td><?= htmlspecialchars($item['name']) ?></td>
+                                <td><?= $item['name'] ?></td>
                                 <td>€<?= number_format($item['price'], 2) ?></td>
                                 <td>
                                     <form method="POST" action="checkout.php">

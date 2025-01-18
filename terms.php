@@ -7,10 +7,10 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="CSS/footer.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
 </head>
 <body>
-    <?php include 'PHP/navbar.php'; ?>
+    <?php include 'php/navbar.php'; ?>
     <div class="container mt-5">
         <div class="text-center mb-4">
             <h1>Políticas e Termos</h1>
@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    <?php include 'PHP/footer.php'; ?>
+    <?php include 'php/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

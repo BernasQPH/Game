@@ -1,12 +1,12 @@
 <?php
-require 'PHP/config.php';
+require 'php/config.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = htmlspecialchars($_POST['email']);
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
 
     $sql = "SELECT * FROM utilizadores WHERE email = ?";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-    <?php include 'PHP/navbar.php'; ?>
+    <?php include 'php/navbar.php'; ?>
     <div class="container mt-5">
         <h2>Login</h2>
         <form method="POST">

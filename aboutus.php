@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - .GAME</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="CSS/footer.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,7 +31,7 @@
     </style>
 </head>
 <body>
-<?php include 'PHP/navbar.php'; ?>
+<?php include 'php/navbar.php'; ?>
     <div id="app" class="container">
         <div class="hero">
             <h1 class="display-4">Sobre Nós</h1>
@@ -39,7 +39,7 @@
         </div>
         <div class="row section align-items-center">
             <div class="col-md-6">
-                <img src="Imagens/gameabout.webp" class="img-fluid rounded" alt="Sobre Nós">
+                <img src="imagens/gameabout.webp" class="img-fluid rounded" alt="Sobre Nós">
             </div>
             <div class="col-md-6">
                 <h2>A Nossa História</h2>
@@ -99,7 +99,7 @@
             }
         }).mount('#app');
     </script>
-    <?php include 'PHP/footer.php'; ?>
+    <?php include 'php/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

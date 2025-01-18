@@ -1,5 +1,5 @@
 <?php
-require 'PHP/config.php';
+require 'php/config.php';
 
 
 

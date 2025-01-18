@@ -7,7 +7,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="CSS/footer.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
 
 
     <style>
@@ -20,7 +20,7 @@
         width: 100%;
         height: 100vh; 
         max-height: 600px; 
-        background-color: url('./imagens/fluxo.jpg');
+        background-color: url('imagens/fluxo.jpg');
     }
     
   
@@ -31,7 +31,7 @@
     }
 
         .hero {
-            background-image: url('./imagens/perfeito.webp');
+            background-image: url('imagens/perfeito.webp');
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -132,7 +132,7 @@ color: #808080;
     
 </head>
 <body>
-<?php include 'PHP/navbar.php'; ?>
+<?php include 'php/navbar.php'; ?>
     <div class="hero">
         <div class="text-center">
         
@@ -255,7 +255,7 @@ color: #808080;
 </div>
 
 
-<?php include 'PHP/footer.php'; ?>
+<?php include 'php/footer.php'; ?>
 
 </body>
 </html>
