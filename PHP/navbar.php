@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php if (isset($_SESSION['user_id'])): ?>
                     
                     <a class="nav-link">Bem-vindo, <?php echo $_SESSION['user_name']; ?></a>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="php/logout.php">Logout</a></li>
                 <?php else: ?>
                   
                     <li class="nav-item"><a class="nav-link" href="registo.php">Registar</a></li>

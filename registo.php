@@ -61,5 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn btn-primary">Registar</button>
         </form>
     </div>
+    <?php include 'php/footer.php'; ?>
 </body>
 </html>

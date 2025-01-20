@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+<?php include 'php/navbar.php'; ?>
     <div class="container mt-5">
         <h1 class="text-center">Carrinho de Compras</h1>
         <div class="table-responsive mt-4">
@@ -58,5 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
             <a href="comprafinal.php" class="btn btn-success">Finalizar Compra</a>
         </div>
     </div>
+    <?php include 'php/footer.php'; ?>
 </body>
 </html>

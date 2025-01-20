@@ -36,7 +36,7 @@
                 of news, updates, helpful tips, and
                 exclusive offers.
               </p>
-              <form action="PHP/subscribe_newsletter.php" method="POST">
+              <form action="php/subscribe_newsletter.php" method="POST">
                 <input type="email" name="email" placeholder="Your email" required>
                 <button type="submit">SUBSCRIBE</button>
               </form>

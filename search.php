@@ -75,6 +75,7 @@ if (isset($_POST['add_to_cart'])) {
 }
 
 
+
 $query = $_GET['query'] ?? '';
 $platform = $_GET['platform'] ?? '';
 $status = $_GET['status'] ?? '';

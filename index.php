@@ -151,12 +151,7 @@ color: #808080;
             <!--<a href="contactos.html" class="btn btn-dark btn-lg px-2">Jogos</a>-->
         </div>
     </div>
-<!----
-    <div class="animacao">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.54/build/spline-viewer.js"></script>
-    <spline-viewer url="https://prod.spline.design/pcFUVpZiUGLnmLLL/scene.splinecode"></spline-viewer>
-</div>
--->
+
   
 <div class="help">
     <h1>Porquê Escolher a Game?</h1>
